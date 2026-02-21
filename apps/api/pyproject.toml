@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "meeting-memo-api"
+version = "0.1.0"
+description = "Meeting-to-Memo + Action Tracker API"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "asyncpg",
+    "alembic",
+    "psycopg2-binary",
+    "pydantic-settings",
+    "pydantic[email]",
+    "python-jose[cryptography]",
+    "passlib[bcrypt]",
+    "python-multipart",
+    "openai>=1.0",
+    "python-docx",
+    "boto3",
+    "slowapi",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+    # passlib[bcrypt] is incompatible with bcrypt>=5.0 (dropped __about__).
+    # Pin to 4.x until passlib releases a fix.
+    "bcrypt<5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]

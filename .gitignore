@@ -1,0 +1,29 @@
+# Environment files
+.env
+*.env.local
+
+# Data uploads
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+dist/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/
+*.swp
